@@ -167,3 +167,8 @@ nav ul li a:hover::after{
     display: block;
 
 }
+
+/* -----Footer----- */
+footer{
+    background-color: white;
+}

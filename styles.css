@@ -169,6 +169,6 @@ nav ul li a:hover::after{
 }
 
 /* -----Footer----- */
-footer{
+.footer{
     background-color: white;
 }

@@ -13,24 +13,28 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <span>N</span>aga <span>H</span>ari <span>P</span>riyan
+                    <img src="./assets/namelogo1.png" alt="logo">
                 </div>
-                <ul>
+                <ul id="sidemenu">
                     <li><a href="#header">Home</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <!-- <li><a href="#Experience">Experience</a></li> -->
                     <!-- <li><a href="#Education">Education</a></li> -->
                     <li><a href="#">Certificates</a></li>
                     <!-- <li><a href="#Skills">Skills</a></li>   -->
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
                 </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
             </nav>
             <div class="header-text neon-border">
                 <p>
                     AI/DS enthusiast
                 </p>
                 <h1>
-                    Hi, I'm <span>Naga Hari Priyan</span><br>from Coimbatore
+                    Hi, I'm <span>Naga Hari Priyan</span><br>
                 </h1>
             </div>
         </div>
@@ -339,16 +343,24 @@
                             <i class="fa-brands fa-square-threads"></i>
                         </a>
                     </div>
+                    <a href="./assets/Resume/NagaHariPriyan_Resume.pdf" download class="btn btn2">Download Resume</a>
                 </div>
                 <div class="contact-right">
-                    <form>
+                    <form name="submit-to-google-sheet">
                         <input type="text" name="Name" placeholder="Your Name" required>
-                        <input type="email" name="email" id="Your mail Id" required>
+                        <input type="email" name="Email" placeholder="Your mail Id" required>
                         <textarea name="Message" rows="6" placeholder="Your Message to me"></textarea>
-                        <button type="submit">Submit</button>
+                        <button type="submit" class="btn btn2">Submit</button>
                     </form>
+                    <span id="msg"></span>
                 </div>
             </div>
+        </div>
+
+        <div class="copyright">
+            <p>
+                Copyright <span>&#169;</span> 2024 Naga Hari Priyan. All Rights Reserved.
+            </p>
         </div>
     </div>
 
@@ -371,6 +383,40 @@
 
 </script>
 
+<script>
+
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right = '0';
+    }
+
+    function closemenu(){
+        sidemenu.style.right = '-200px';
+    }
+
+</script>
+
+
+  
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx9qmk461yhJaHyr3dKRa3tgaZ5V3Mni-vZOBFpvr9OqF5yFcnzianbZLFYEwWWtkJ0/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML="Message sent Successfully"
+            setTimeout(function(){
+                msg.innerHTML=""
+            },500)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 </body>
 </html>
 

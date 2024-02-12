@@ -399,10 +399,10 @@ form input, form textarea{
     border-radius: 6px;
 }
 
-/* #portfolio, #services, #about, #contact{
+#portfolio .container, #services .container, #about .container, #contact .container{
     padding-left: 100px;
     padding-right: 100px;
-} */
+}
 
 /* --------------- Form ---------------  */
 
